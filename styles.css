@@ -30,3 +30,7 @@ div {
   width: 310px;
   margin: 0 auto;
 }
+
+.reset {
+  padding: .5rem;
+}

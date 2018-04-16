@@ -2,23 +2,23 @@ const squares = document.querySelectorAll('.square');
 
 let state = 'x';
 
-function stateSwitcher(state) {
-  if (state === 'x') {
-    state = 'o';
-  } else {
-    state = 'x';
-  }
+function switchState(state) {
+  return (state === 'x' ? 'o' : 'x');
 }
-
-stateSwitcher(state);
-console.log(state);
 
 function handleClick(e) {
   e.target.innerHTML = state;
+  state = switchState(state);
 }
 
 squares.forEach((element) => {
   element.addEventListener('click', handleClick);
+})
+
+document.querySelector('.reset').addEventListener('click', function(e) {
+  squares.forEach((element) => {
+    element.innerHTML = '';
+  })
 })
 
 /* To Do:
