@@ -1,24 +1,25 @@
-const squares = document.querySelectorAll('div');
+const squares = document.querySelectorAll('.square');
 
-let state = '';
+let state = 'x';
 
-function stateSwitcher() {
-  return (state ? 'x' : 'o');
+function stateSwitcher(state) {
+  if (state === 'x') {
+    state = 'o';
+  } else {
+    state = 'x';
+  }
 }
+
+stateSwitcher(state);
+console.log(state);
 
 function handleClick(e) {
-  e.target.innerHTML = 'x';
+  e.target.innerHTML = state;
 }
 
-squares[1].addEventListener('click', handleClick);
-squares[2].addEventListener('click', handleClick);
-squares[3].addEventListener('click', handleClick);
-squares[4].addEventListener('click', handleClick);
-squares[5].addEventListener('click', handleClick);
-squares[6].addEventListener('click', handleClick);
-squares[7].addEventListener('click', handleClick);
-squares[8].addEventListener('click', handleClick);
-squares[9].addEventListener('click', handleClick);
+squares.forEach((element) => {
+  element.addEventListener('click', handleClick);
+})
 
 /* To Do:
 
