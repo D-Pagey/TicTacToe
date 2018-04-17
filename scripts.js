@@ -9,23 +9,20 @@ function switchState(state) {
 function handleClick(e) {
   e.target.innerHTML = state;
   state = switchState(state);
+  e.target.removeEventListener('click', handleClick);
 }
 
-squares.forEach((element) => {
-  element.addEventListener('click', handleClick);
-})
+function enable() {
+  squares.forEach((element) => {
+    element.addEventListener('click', handleClick);
+  })  
+}
+
+enable();
 
 document.querySelector('.reset').addEventListener('click', function(e) {
   squares.forEach((element) => {
     element.innerHTML = '';
+    enable();
   })
 })
-
-/* To Do:
-
-1) Hit a square, if empty then X, if X then do nothing.
-2) Next square hit, has to be inverse of X or O. Stateswitcher should sort it.
-3) Check if 3 add up then you win. Array of win results?
-4) Check how other people coded theirs. 
-
-*/
