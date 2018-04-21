@@ -111,6 +111,22 @@
   display: none;
 }
 
+.modal {
+  border-radius: 10px;
+  top: 16%;
+  width: 210px;
+}
+
+.modal::backdrop {
+  background: darkgray;
+  opacity: 0.95;
+}
+
+.modal-message {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
 .reset {
   background-color: #BAD7F9;
   border: 1px solid black;
