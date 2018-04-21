@@ -10,6 +10,7 @@ function handleClick(e) {
   e.target.innerHTML = state;
   state = switchState(state);
   e.target.removeEventListener('click', handleClick);
+  console.log(e.target.className);
 }
 
 function enable() {
@@ -26,3 +27,5 @@ document.querySelector('.reset').addEventListener('click', function(e) {
     enable();
   })
 })
+
+const winningCombos = [];

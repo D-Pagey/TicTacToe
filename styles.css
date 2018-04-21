@@ -1,6 +1,39 @@
-div {
-  width: 100px;
-  height: 100px;
+.app {
+  background-color: #FDFFB5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.title {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 30px auto;
+  padding: 5px;
+  text-align: center;
+  width: 12.5rem;
+}
+
+.main-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.board {
+  align-content: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 280px;
+  width: 280px;
+}
+
+.square {
+  width: 32%;
+  height: 32%;
   font-size: 50px;
   text-align: center;
 }
@@ -8,29 +41,25 @@ div {
 .two,
 .five,
 .eight {
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
 }
 
 .four,
 .five,
 .six {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-.title {
-  text-align: center;
-}
-
-.board {
-  display: flex;
-  flex-wrap: wrap;
-  height: 310px;
-  width: 310px;
-  margin: 0 auto;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 .reset {
+  background-color: #BAD7F9;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
   padding: .5rem;
+  width: 7rem;
 }
