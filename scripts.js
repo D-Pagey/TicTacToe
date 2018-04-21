@@ -4,43 +4,53 @@
 const squares = document.querySelectorAll('.square');
 const elements = document.querySelectorAll('.element');
 const resetBtn = document.querySelector('.reset');
+const teamBtns = document.querySelectorAll('.choose-btn');
 
 /**
  * Global Variables
  */
-let player = 'X';
+let team = 'X';
 let board = ['E', 'E','E','E','E','E','E','E','E'];
 
 /**
  * Methods
  */
-addClickEvent();
+function chooseTeam(e) {
+  team = e.target.innerHTML;
+  document.querySelector('.choose-area').className = 'hidden';
+  document.querySelector('.team-area').className = 'team-area';
+  document.getElementById('player').innerHTML = team;
+  document.getElementById('player').className = team;
+  document.getElementById('computer').innerHTML = (team === 'X' ? 'O' : 'X');
+  document.getElementById('computer').className = (team === 'X' ? 'O' : 'X');
+  addClickEvent();
+}
 
-function switchPlayer(player) {
-  return (player === 'X' ? 'O' : 'X');
+function switchTeam(team) {
+  return (team === 'X' ? 'O' : 'X');
 }
 
 function playerMove(e) {
-  e.target.childNodes[1].innerHTML = player;
-  board[e.target.dataset.value] = player;
-  isGameOver(board, player);
-  player = switchPlayer(player);
+  e.target.childNodes[1].innerHTML = team;
+  board[e.target.dataset.value] = team;
+  isGameOver(board, team);
+  team = switchTeam(team);
   e.target.removeEventListener('click', playerMove);
 }
 
-function isGameOver(board, player) {
+function isGameOver(board, team) {
   if (
     // Horizontal
-    (board[0] === player && board[1] === player && board[2] === player) ||
-    (board[3] === player && board[4] === player && board[5] === player) ||
-    (board[6] === player && board[7] === player && board[8] === player) ||
+    (board[0] === team && board[1] === team && board[2] === team) ||
+    (board[3] === team && board[4] === team && board[5] === team) ||
+    (board[6] === team && board[7] === team && board[8] === team) ||
     // Vertical
-    (board[0] === player && board[3] === player && board[6] === player) ||
-    (board[1] === player && board[4] === player && board[7] === player) ||
-    (board[2] === player && board[5] === player && board[8] === player) ||
+    (board[0] === team && board[3] === team && board[6] === team) ||
+    (board[1] === team && board[4] === team && board[7] === team) ||
+    (board[2] === team && board[5] === team && board[8] === team) ||
     // Diagonal
-    (board[0] === player && board[4] === player && board[8] === player) ||
-    (board[2] === player && board[4] === player && board[6] === player)
+    (board[0] === team && board[4] === team && board[8] === team) ||
+    (board[2] === team && board[4] === team && board[6] === team)
   ) {
     console.log('game over');
   } else {
@@ -51,7 +61,11 @@ function isGameOver(board, player) {
 /**
   * Event Listeners
  */
-function addClickEvent() {
+teamBtns.forEach((element) => {
+  element.addEventListener('click', chooseTeam);
+})
+
+ function addClickEvent() {
   squares.forEach((element) => {
     element.addEventListener('click', playerMove);
   })  

@@ -20,7 +20,13 @@
 
       <main class='main-container'>
 
-        <div class='board'>
+        <div class='choose-area'>
+            <h4 class='choose-title'>Choose your team:</h4>
+            <button class='choose-btn'>X</button>
+            <button class='choose-btn'>O</button>
+        </div>
+
+        <section class='board'>
           <div class='square one' data-value="0">
             <p class='element'></p>
           </div>
@@ -48,6 +54,11 @@
           <div class='square nine' data-value="8">
               <p class='element'></p>
           </div>
+        </section>
+
+        <div class='team-area hidden'>
+            <p class='teams'>Player: <span id='player'></span></p>
+            <p class='teams'>Computer: <span id='computer'></span></p>
         </div>
 
         <button class='reset'>Reset</button>
