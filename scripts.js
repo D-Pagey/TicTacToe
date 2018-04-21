@@ -1,31 +1,44 @@
+/**
+ * Selectors
+ */
 const squares = document.querySelectorAll('.square');
+const elements = document.querySelectorAll('.element');
+const resetBtn = document.querySelector('.reset');
 
-let state = 'x';
+/**
+ * Global Variables
+ */
+let player = 'X';
 
-function switchState(state) {
-  return (state === 'x' ? 'o' : 'x');
+/**
+ * Methods
+ */
+addClickEvent();
+
+function switchPlayer(player) {
+  return (player === 'X' ? 'O' : 'X');
 }
 
-function handleClick(e) {
-  e.target.innerHTML = state;
-  state = switchState(state);
-  e.target.removeEventListener('click', handleClick);
-  console.log(e.target.className);
+function playerMove(e) {
+  e.target.childNodes[1].innerHTML = player;
+  player = switchPlayer(player);
+  e.target.removeEventListener('click', playerMove);
 }
 
-function enable() {
+/**
+  * Event Listeners
+ */
+function addClickEvent() {
   squares.forEach((element) => {
-    element.addEventListener('click', handleClick);
+    element.addEventListener('click', playerMove);
   })  
 }
 
-enable();
-
-document.querySelector('.reset').addEventListener('click', function(e) {
-  squares.forEach((element) => {
+resetBtn.addEventListener('click', function() {
+  elements.forEach((element) => {
     element.innerHTML = '';
-    enable();
+    addClickEvent();
   })
 })
 
-const winningCombos = [];
+

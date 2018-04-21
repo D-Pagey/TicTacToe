@@ -32,10 +32,13 @@
 }
 
 .square {
-  width: 32%;
+  display: flex;
+  flex-direction: column;
+  font-size: 40px;
   height: 32%;
-  font-size: 50px;
+  justify-content: center;
   text-align: center;
+  width: 32%;
 }
 
 .two,
@@ -50,6 +53,11 @@
 .six {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
+}
+
+.element {
+  margin: 0;
+  padding: 0;
 }
 
 .reset {
