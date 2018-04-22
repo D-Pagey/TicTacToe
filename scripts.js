@@ -10,16 +10,16 @@ const modal = document.querySelector('.modal');
 /**
  * Global Variables
  */
-let team = 'X';
-let board = ['E', 'E','E','E','E','E','E','E','E'];
+let team;
+let board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 /**
  * Methods
  */
 function chooseTeam(e) {
   team = e.target.innerHTML;
-  document.querySelector('.choose-area').className = 'hidden';
-  document.querySelector('.team-area').className = 'team-area';
+  document.querySelector('#choose-area').className = 'hidden';
+  document.querySelector('#team-area').className = 'team-area';
   document.getElementById('player').innerHTML = team;
   document.getElementById('player').className = team;
   document.getElementById('computer').innerHTML = (team === 'X' ? 'O' : 'X');
@@ -37,6 +37,22 @@ function playerMove(e) {
   isGameOver(board, team);
   team = switchTeam(team);
   e.target.removeEventListener('click', playerMove);
+  computerMove();
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+function computerMove() {
+  let empty = board.filter(element => typeof element === 'number');
+  let index = getRandomInt(empty.length);
+  let computerChoice = empty[index];
+  squares[computerChoice].childNodes[1].innerHTML = team;
+  board[computerChoice] = team;
+  isGameOver(board, team);
+  team = switchTeam(team);
+  squares[computerChoice].removeEventListener('click', playerMove);
 }
 
 function isGameOver(board, team) {
@@ -57,7 +73,19 @@ function isGameOver(board, team) {
     setTimeout(function() {
       modal.close()
     }, 2250);
+    removeClickEvent();
+    setTimeout(resetGame, 3750);
   } 
+}
+
+function resetGame() {
+  board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  removeClickEvent();
+  elements.forEach((element) => {
+    element.innerHTML = '';
+  });
+  document.querySelector('#choose-area').className = 'choose-area';
+  document.querySelector('#team-area').className = 'team-area hidden';
 }
   
 
@@ -68,18 +96,18 @@ teamBtns.forEach((element) => {
   element.addEventListener('click', chooseTeam);
 })
 
+resetBtn.addEventListener('click', resetGame);
+
  function addClickEvent() {
   squares.forEach((element) => {
     element.addEventListener('click', playerMove);
   })  
 }
 
-// resetBtn.addEventListener('click', function() {
-//   elements.forEach((element) => {
-//     element.innerHTML = '';
-//     addClickEvent();
-//   });
-//   board = ['E', 'E','E','E','E','E','E','E','E'];
-// })
+function removeClickEvent() {
+  squares.forEach((element) => {
+    element.removeEventListener('click', playerMove);
+  })  
+}
 
 

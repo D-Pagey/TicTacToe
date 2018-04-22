@@ -20,7 +20,7 @@
 
       <main class='main-container'>
 
-        <div class='choose-area'>
+        <div class='choose-area' id='choose-area'>
             <h4 class='choose-title'>Choose your team:</h4>
             <button class='choose-btn'>X</button>
             <button class='choose-btn'>O</button>
@@ -56,13 +56,13 @@
           </div>
         </section>
 
-        <div class='team-area hidden'>
+        <div class='team-area hidden' id='team-area'>
             <p class='teams'>Player: <span id='player'></span></p>
             <p class='teams'>Computer: <span id='computer'></span></p>
         </div>
 
         <dialog class='modal'>
-            <p class='modal-message'>Congratulations! You beat the computer!</p>
+            <p class='modal-message'>Congratulations, you beat the computer!</p>
         </dialog>
 
         <button class='reset'>Reset</button>
