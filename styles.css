@@ -3,11 +3,95 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+/* Modal */
+.modal-container {
+  display: inline-flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.modal-btn {
+  background-color: transparent;
+  border: none;
+  opacity: .85;
+}
+
+.material-icons.md-14 {
+  font-size: 28px;
+}
+
+.sm-12 {
+  background-color: white;
+}
+
+.modal-about {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: .5rem;
+  top: 60px;
+  width: 85%;
+}
+
+.modal-cancel {
+  background-color: white;
+  border: none;
+  float: right;
+}
+
+.material-icons.sm-12 {
+  font-size: 20px;
+}
+
+.modal-title {
+  background-color: white;
+  color: royalblue;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: .5rem;
+  text-decoration: underline;
+}
+
+.user-stories {
+  background-color: white;
+  font-style: italic;
+  padding: .5rem 2rem .5rem 2.5rem;
+}
+
+.story:nth-of-type(2) {
+  margin-top: 1rem;
+}
+
+.modal-text {
+  background-color: white;
+  margin: .5rem;
+}
+
+.copy {
+  background-color: white;
+  font-size: 1.1rem;
+}
+
+.white-link {
+  background-color: white;
+  color: royalblue;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.modal-about::backdrop {
+  background: darkgray;
+  opacity: .85;
+}
+
+/* Main Content */
 .title {
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 5px;
   text-align: center;
   width: 12.5rem;
@@ -111,18 +195,19 @@
   display: none;
 }
 
-.modal {
+/* 2nd Modal */
+.result {
   border-radius: 10px;
   top: 16%;
   width: 210px;
 }
 
-.modal::backdrop {
+.result::backdrop {
   background: darkgray;
   opacity: 0.95;
 }
 
-.modal-message {
+.result-message {
   font-size: 1.2rem;
   text-align: center;
 }
@@ -137,4 +222,19 @@
   margin-top: 25px;
   padding: .5rem;
   width: 7rem;
+}
+
+.footer {
+  bottom: 0;
+  height: 30px;
+  left: 0;
+  margin-bottom: 20px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.freecodecamp {
+  color: #007bff;
+  text-decoration: none;
 }

@@ -8,17 +8,48 @@
 
     <title>TicTacToe</title>
 
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:300,400'>
-    <link rel='stylesheet' href='styles.css'>
-    <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:300,400' 
+    rel='stylesheet' >
+    <link href='https://fonts.googleapis.com/icon?family=Material+Icons' 
+    rel='stylesheet'>
+    <link href='styles.css' rel='stylesheet' >
 
   </head>
 
   <body class='app'>
 
-      <h1 class='title'>Tic-Tac-Toe</h1>
+    <div class='modal-container'>
 
-      <main class='main-container'>
+        <button type='button' class='modal-btn'>
+            <i class='material-icons md-14'>
+                info_outline</i></button>
+
+        <dialog class='modal-about'>
+            <button type='button' name='button' class='modal-cancel'>
+                <i class='material-icons sm-12'>
+                    clear</i></button>
+                      
+            <h4 class='modal-title'>Wikipedia Viewer</h4>
+            <p class='modal-text'>This is an Intermediate Front End 
+                Developer project from the FreeCodeCamp curriculum. The user 
+                stories to becompleted are:</p>
+            <ul class='user-stories'>
+                <li class='story'>I can search Wikipedia entries in a search
+                     box and see the resulting Wikipedia entries.</li>
+                <li class='story'>I can click a button to see a random 
+                    Wikipedia entry.</li>
+            </ul>
+
+            <p class='modal-text copy'>This project was coded in React using
+                 Create-React-App. The code can be seen on 
+                 <a href='https://github.com/D-Pagey/wikipedia' target='_blank' 
+                 rel='noopener noreferrer' class='link'>Github</a>.</p>
+        </dialog>
+    </div>
+
+    <h1 class='title'>Tic-Tac-Toe</h1>
+
+    <main class='main-container'>
 
         <div class='choose-area' id='choose-area'>
             <h4 class='choose-title'>Choose your team:</h4>
@@ -27,31 +58,31 @@
         </div>
 
         <section class='board'>
-          <div class='square one' data-value="0">
+          <div class='square one' data-value='0'>
             <p class='element'></p>
           </div>
-          <div class='square two' data-value="1">
+          <div class='square two' data-value='1'>
             <p class='element'></p>
           </div>
-          <div class='square three' data-value="2">
+          <div class='square three' data-value='2'>
               <p class='element'></p>
           </div>
-          <div class='square four' data-value="3">
+          <div class='square four' data-value='3'>
               <p class='element'></p>
           </div>
-          <div class='square five' data-value="4">
+          <div class='square five' data-value='4'>
               <p class='element'></p>
           </div>
-          <div class='square six' data-value="5">
+          <div class='square six' data-value='5'>
               <p class='element'></p>
           </div>
-          <div class='square seven' data-value="6">
+          <div class='square seven' data-value='6'>
               <p class='element'></p>
           </div>
-          <div class='square eight' data-value="7">
+          <div class='square eight' data-value='7'>
               <p class='element'></p>
           </div>
-          <div class='square nine' data-value="8">
+          <div class='square nine' data-value='8'>
               <p class='element'></p>
           </div>
         </section>
@@ -61,13 +92,19 @@
             <p class='teams'>Computer: <span id='computer'></span></p>
         </div>
 
-        <dialog class='modal'>
-            <p class='modal-message'>Congratulations, you beat the computer!</p>
+        <dialog class='result'>
+            <p class='result-message'>Congratulations, you beat the computer!</p>
         </dialog>
 
         <button class='reset'>Reset</button>
 
-      </main>
+        <footer class='footer'>
+            <p>Written and coded by 
+                <a href='https://www.freecodecamp.org/d-pagey' 
+                target='_blank' class='freecodecamp'>Pagey</a></p>
+        </footer>
+
+    </main>
 
     <script src='scripts.js'></script>
   </body>

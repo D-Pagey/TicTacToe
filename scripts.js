@@ -1,11 +1,13 @@
 /**
  * Selectors
  */
+const modal = document.querySelector('.modal-btn');
+const modalExit = document.querySelector('.modal-cancel');
+const teamBtns = document.querySelectorAll('.choose-btn');
 const squares = document.querySelectorAll('.square');
 const elements = document.querySelectorAll('.element');
 const resetBtn = document.querySelector('.reset');
-const teamBtns = document.querySelectorAll('.choose-btn');
-const modal = document.querySelector('.modal');
+const result = document.querySelector('.result');
 
 /**
  * Global Variables
@@ -69,9 +71,9 @@ function isGameOver(board, team) {
     (board[0] === team && board[4] === team && board[8] === team) ||
     (board[2] === team && board[4] === team && board[6] === team)
   ) {
-    modal.showModal();
+    result.showModal();
     setTimeout(function() {
-      modal.close()
+      result.close()
     }, 2250);
     removeClickEvent();
     setTimeout(resetGame, 3750);
@@ -97,6 +99,14 @@ teamBtns.forEach((element) => {
 })
 
 resetBtn.addEventListener('click', resetGame);
+
+modal.addEventListener('click', function() {
+  document.querySelector('.modal-about').showModal();
+})
+
+modalExit.addEventListener('click', function() {
+  document.querySelector('.modal-about').close();
+})
 
  function addClickEvent() {
   squares.forEach((element) => {
