@@ -1,0 +1,27 @@
+.choose-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+  width: 210px;
+}
+
+.choose-title {
+  font-size: 22px;
+  margin: 0 0 15px;
+}
+
+.choose-btn {
+  background-color: #FF5A57;
+  border: 0;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: .5rem .25rem;
+  width: 4rem;
+}
+
+.choose-btn:nth-of-type(2) {
+  background-color: #5FC8F7;
+}
