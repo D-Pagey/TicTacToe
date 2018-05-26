@@ -1,0 +1,41 @@
+.board {
+    align-content: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 280px;
+    justify-content: center;
+    margin: 0 auto;
+    width: 280px;
+  }
+  
+  .square {
+    display: flex;
+    flex-direction: column;
+    font-size: 40px;
+    height: 32%;
+    justify-content: center;
+    text-align: center;
+    width: 32%;
+  }
+  
+  .two,
+  .five,
+  .eight {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+  }
+  
+  .four,
+  .five,
+  .six {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+  
+  .element {
+    margin: 0;
+    padding: 0;
+  }
