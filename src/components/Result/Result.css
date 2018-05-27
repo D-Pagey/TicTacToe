@@ -1,0 +1,15 @@
+.result {
+    border-radius: 10px;
+    top: 16%;
+    width: 210px;
+  }
+  
+  .result::backdrop {
+    background: darkgray;
+    opacity: 0.95;
+  }
+  
+  .result-message {
+    font-size: 1.2rem;
+    text-align: center;
+  }

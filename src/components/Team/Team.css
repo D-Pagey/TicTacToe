@@ -1,0 +1,14 @@
+.team-area {
+    margin-top: 30px;
+    width: 210px;
+  }
+  
+  .teams {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .hidden {
+    display: none;
+  }
