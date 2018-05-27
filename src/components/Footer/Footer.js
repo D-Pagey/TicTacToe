@@ -4,11 +4,11 @@ import './Footer.css';
 
 function Footer() {
     return (
-        <footer class='footer'>
+        <footer className='footer'>
             <p>Written and coded by
                 <a href='https://www.freecodecamp.org/d-pagey' 
-                target='_blank' rel="noopener noreferrer" class='freecodecamp'>
-                 Pagey</a></p>
+                target='_blank' rel="noopener noreferrer" 
+                className='freecodecamp'> Pagey</a></p>
         </footer>
     )
 }

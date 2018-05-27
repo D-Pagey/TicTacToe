@@ -4,8 +4,8 @@ import './Result.css';
 
 function Result() {
     return (
-        <dialog class='result'>
-            <p class='result-message'></p>
+        <dialog className='result'>
+            <p className='result-message'></p>
         </dialog>
     )
 }

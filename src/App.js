@@ -35,7 +35,7 @@ class App extends Component {
         <Board />
         <Team />
         <Result />
-        <button class='reset'>Reset</button>
+        <button className='reset'>Reset</button>
         <Footer />
       </div>
     );
