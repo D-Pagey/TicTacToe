@@ -8,20 +8,14 @@ import Result from './components/Result';
 import Footer from './components/Footer';
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
+    state = {
       player: '',
       computer: '',
-      board: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      board: Array(9).fill(null),
       chosenTeam: false,
     }
 
-    this.chooseTeam = this.chooseTeam.bind(this);
-  }
-
- chooseTeam(e) {
+ chooseTeam = (e) => {
     this.setState({
       player: e.target.innerHTML,
       computer: (e.target.innerHTML === 'X' ? 'O' : 'X'),
@@ -29,17 +23,36 @@ class App extends Component {
     });
  }
 
+ playerMove = (index) => {
+   const newBoard = {...this.state.board};
+   newBoard[index] = this.state.player;
+   this.setState({ board: newBoard });
+ }
+
+ getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+ resetGame = () => {
+  this.setState({
+    player: '',
+    computer: '',
+    board: Array(9).fill(null),
+    chosenTeam: false,
+  });
+ }
+
   render() {
     return (
       <div className="App">
         <h1 className='title'>Tic-Tac-Toe</h1>
         <Choose chooseTeam={this.chooseTeam} toggle={this.state.chosenTeam} />
-        <Board />
+        <Board board={this.state.board} playerMove={this.playerMove} />
         <Team toggle={this.state.chosenTeam}
         player={this.state.player}
         computer={this.state.computer} />
         <Result />
-        <button className='reset'>Reset</button>
+        <button className='reset' onClick={this.resetGame}>Reset</button>
         <Footer />
       </div>
     );
