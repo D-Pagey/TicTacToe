@@ -27,10 +27,22 @@ class App extends Component {
    const newBoard = {...this.state.board};
    newBoard[index] = this.state.player;
    this.setState({ board: newBoard });
+   setTimeout(this.computerMove, 500);
  }
 
- getRandomInt(max) {
+ getRandomInt = (max) => {
   return Math.floor(Math.random() * Math.floor(max));
+}
+
+computerMove = () => {
+  const emptyCells = Object.entries(this.state.board)
+  .filter(element => element[1] == null)
+  .map(element => element[0]);
+  const indices = emptyCells.map(element => parseInt(element));
+  const computerChoice = emptyCells[this.getRandomInt(emptyCells.length)];
+  const newerBoard = {...this.state.board}
+  newerBoard[computerChoice] = this.state.computer;
+  this.setState({ board: newerBoard });
 }
 
  resetGame = () => {
