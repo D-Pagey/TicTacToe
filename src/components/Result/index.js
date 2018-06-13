@@ -1,3 +1,11 @@
-import Result from './Result.js';
+import React from 'react';
 
-export default Result;
+import './index.css';
+
+export default function Result() {
+    return (
+        <dialog className='result'>
+            <p className='result-message'></p>
+        </dialog>
+    )
+}
