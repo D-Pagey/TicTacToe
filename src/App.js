@@ -6,6 +6,7 @@ import Board from './components/Board';
 import Team from './components/Team';
 import Result from './components/Result';
 import Footer from './components/Footer';
+import isGameOver from './utils/gameOver';
 
 class App extends Component {
     state = {
@@ -26,7 +27,11 @@ class App extends Component {
  playerMove = (index) => {
    const newBoard = {...this.state.board};
    newBoard[index] = this.state.player;
-   this.setState({ board: newBoard });
+   this.setState({ board: newBoard }, this.delay);
+ }
+
+ delay = () => {
+   isGameOver(this.state.board, this.state.player);
    setTimeout(this.computerMove, 500);
  }
 
@@ -38,11 +43,10 @@ computerMove = () => {
   const emptyCells = Object.entries(this.state.board)
   .filter(element => element[1] == null)
   .map(element => element[0]);
-  const indices = emptyCells.map(element => parseInt(element));
   const computerChoice = emptyCells[this.getRandomInt(emptyCells.length)];
   const newerBoard = {...this.state.board}
   newerBoard[computerChoice] = this.state.computer;
-  this.setState({ board: newerBoard });
+  setTimeout(this.setState({ board: newerBoard }), 500);
 }
 
  resetGame = () => {
