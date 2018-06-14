@@ -6,57 +6,79 @@ import Board from './components/Board';
 import Team from './components/Team';
 import Result from './components/Result';
 import Footer from './components/Footer';
-import isGameOver from './utils/gameOver';
 
 class App extends Component {
-    state = {
-      player: '',
-      computer: '',
-      board: Array(9).fill(null),
-      chosenTeam: false,
-    }
-
- chooseTeam = (e) => {
-    this.setState({
-      player: e.target.innerHTML,
-      computer: (e.target.innerHTML === 'X' ? 'O' : 'X'),
-      chosenTeam: true
-    });
- }
-
- playerMove = (index) => {
-   const newBoard = {...this.state.board};
-   newBoard[index] = this.state.player;
-   this.setState({ board: newBoard }, this.delay);
- }
-
- delay = () => {
-   isGameOver(this.state.board, this.state.player);
-   setTimeout(this.computerMove, 500);
- }
-
- getRandomInt = (max) => {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-
-computerMove = () => {
-  const emptyCells = Object.entries(this.state.board)
-  .filter(element => element[1] == null)
-  .map(element => element[0]);
-  const computerChoice = emptyCells[this.getRandomInt(emptyCells.length)];
-  const newerBoard = {...this.state.board}
-  newerBoard[computerChoice] = this.state.computer;
-  setTimeout(this.setState({ board: newerBoard }), 500);
-}
-
- resetGame = () => {
-  this.setState({
+  state = {
     player: '',
     computer: '',
     board: Array(9).fill(null),
     chosenTeam: false,
-  });
- }
+    gameOver: false,
+    gameOverMsg: null,
+  }
+
+  chooseTeam = (e) => {
+    this.setState({
+    player: e.target.innerHTML,
+    computer: (e.target.innerHTML === 'X' ? 'O' : 'X'),
+    chosenTeam: true
+    });
+  } 
+  
+  getRandomInt = (max) => {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  playerMove = (index) => {
+    const newBoard = {...this.state.board};
+    newBoard[index] = this.state.player;
+    this.setState({ board: newBoard }, () => {
+      this.isGameOver(this.state.board, this.state.player);
+    });
+  }
+
+  computerMove = () => {
+    const emptyCells = Object.entries(this.state.board)
+      .filter(element => element[1] == null)
+      .map(element => element[0]);
+    const computerChoice = emptyCells[this.getRandomInt(emptyCells.length)];
+    const newerBoard = {...this.state.board}
+    newerBoard[computerChoice] = this.state.computer;
+    setTimeout(() => {
+      this.setState({ board: newerBoard })
+    }, 500);
+  } 
+
+  isGameOver = (board, team) => {
+    if (
+        // Horizontal
+        (board[0] === team && board[1] === team && board[2] === team) ||
+        (board[3] === team && board[4] === team && board[5] === team) ||
+        (board[6] === team && board[7] === team && board[8] === team) ||
+        // Vertical
+        (board[0] === team && board[3] === team && board[6] === team) ||
+        (board[1] === team && board[4] === team && board[7] === team) ||
+        (board[2] === team && board[5] === team && board[8] === team) ||
+        // Diagonal
+        (board[0] === team && board[4] === team && board[8] === team) ||
+        (board[2] === team && board[4] === team && board[6] === team)
+      ) {
+        this.setState({ gameOver: true });
+        console.log('chicken');
+      } else {
+        console.log('no chicken');
+        this.computerMove();
+      }
+  }
+
+  resetGame = () => {
+    this.setState({
+      computer: '',
+      board: Array(9).fill(null),
+      chosenTeam: false,
+      player: '',
+    });
+  }
 
   render() {
     return (
