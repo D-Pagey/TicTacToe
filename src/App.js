@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import Choose from './components/Choose';
-import Board from './components/Board';
-import Team from './components/Team';
-import Result from './components/Result';
-import Footer from './components/Footer';
+import Modal from './components/Container/Modal';
+import Choose from './components/Presentational/Choose';
+import Board from './components/Presentational/Board';
+import Team from './components/Presentational/Team';
+import Result from './components/Presentational/Result';
+import Footer from './components/Presentational/Footer';
 
 class App extends Component {
   state = {
@@ -63,10 +64,12 @@ class App extends Component {
         (board[0] === team && board[4] === team && board[8] === team) ||
         (board[2] === team && board[4] === team && board[6] === team)
       ) {
-        this.setState({ gameOver: true });
-        console.log('chicken');
+        this.setState({ 
+          gameOver: true,
+          gameOverMsg: 'Well done',          
+        });
+        setTimeout(this.resetGame, 2000);
       } else {
-        console.log('no chicken');
         this.computerMove();
       }
   }
@@ -77,19 +80,22 @@ class App extends Component {
       board: Array(9).fill(null),
       chosenTeam: false,
       player: '',
+      gameOver: false,
+      gameOverMsg: '',
     });
   }
 
   render() {
     return (
       <div className="App">
+        <Modal />
         <h1 className='title'>Tic-Tac-Toe</h1>
         <Choose chooseTeam={this.chooseTeam} toggle={this.state.chosenTeam} />
         <Board board={this.state.board} playerMove={this.playerMove} />
         <Team toggle={this.state.chosenTeam}
         player={this.state.player}
         computer={this.state.computer} />
-        <Result />
+        <Result message={this.state.gameOverMsg} modalState={this.state.gameOver} />
         <button className='reset' onClick={this.resetGame}>Reset</button>
         <Footer />
       </div>
